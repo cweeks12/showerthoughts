@@ -1,0 +1,56 @@
+html, body {
+    background-color: #CCF;
+    margin: 0;
+    background-image: url(/showerthoughts/img/background.jpg);
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 90% 10% 10%;
+    grid-template-areas: 
+        "thought"
+        "button"
+        "footer";
+    height: 100%;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+#thought {
+    grid-area: thought;
+    background-color: rgba(128,128,128,0.5);
+    color: white;
+    max-width: 75%;
+    margin: auto;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#button {
+    grid-area: button;
+    text-align: center;
+}
+
+#footer {
+    width: 100%;
+    grid-area: footer;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: auto;
+
+    background-color: rgba(230,230,230,0.7);
+    color: #333;
+    text-align: center;
+}
+
+#footer a {
+    color: #338;
+}
+
+
