@@ -1,31 +1,26 @@
 $(document).ready(function(){
 
+    var numberOfComics = 0;
+
+    $.ajax({
+        type: "GET",
+        url: "https://xkcd.com/info.0.json",
+        dataType: "json",
+        success: function(json){
+            console.log(json);
+            numberOfComics = json.num;
+        }
+    });
+
     $("#submitButton").click(function(e){
         e.preventDefault();
 
-        var accessToken = "";
-
-        $.ajax({
-            type: "POST",
-            url: "https://www.reddit.com/api/v1/access_token",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader ("Authorization", "Basic " + btoa("VHajlooUAOB94A" + ":" + "5i2w-Hghn-eAcxeI1TRK8ZSAlYc"));
-            },
-            dataType: "json",
-            data: {grant_type: "client_credentials"},
-            success: function(json){
-                accessToken = json.access_token;
-                console.log(json);
-            }
-        });
+        var random = Math.floor(Math.random() * numberOfComics) + 1;
 
         $.ajax({
             type: "GET",
             dataType: "json",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader ("Authorization", "bearer " + accessToken);
-            },
-            url: "https://oauth.reddit.com/r/showerthoughts/random",
+            url: "https://xkcd.com/" + random + "/info.0.json",
             success: function(json){
                 console.log(json);
             }
