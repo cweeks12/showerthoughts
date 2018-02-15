@@ -14,9 +14,17 @@ $(document).ready(function(){
                 format: "jsonp"
               },
             success: function(json){
-                    console.log(json);
                    $("#thought").fadeOut(1000, function(){
-                       $("#thought").html(json.quoteText); 
+                       if (json.quoteAuthor === ''){
+                           json.quoteAuthor = 'Unknown';
+                       }
+
+                       var newMessage = ('&quot;' + json.quoteText 
+                               + '&quot;<div id="speaker">-' 
+                               + json.quoteAuthor + '</div>'); 
+
+                       $("#thought").html(newMessage);
+
                        $("#thought").fadeIn(1000);
                   });
                 }

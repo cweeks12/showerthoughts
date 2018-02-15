@@ -33,6 +33,13 @@ body {
     font-family: 'Kavivanar', cursive;
 }
 
+#speaker {
+    font-size: 18pt;
+    text-align: right;
+    padding-right: 15%;
+}
+
+
 #button {
     grid-area: button;
     text-align: center;
