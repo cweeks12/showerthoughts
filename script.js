@@ -5,13 +5,21 @@ $(document).ready(function(){
         e.preventDefault();
 
         $.ajax({
-            type: "GET",
-            url: "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
-            dataType: "json",
+              url: "https://api.forismatic.com/api/1.0/",
+              jsonp: "jsonp",
+              dataType: "jsonp",
+              data: {
+                method: "getQuote",
+                lang: "en",
+                format: "jsonp"
+              },
             success: function(json){
-                console.log(json.quoteText);
-               $("#thought").html(json.quoteText); 
-            }
+                    console.log(json);
+                   $("#thought").fadeOut(1000, function(){
+                       $("#thought").html(json.quoteText); 
+                       $("#thought").fadeIn(1000);
+                  });
+                }
         });
 
     });
