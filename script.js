@@ -1,30 +1,17 @@
 $(document).ready(function(){
 
-    var numberOfComics = 0;
-
-    $.ajax({
-        type: "GET",
-        url: "https://xkcd.com/info.0.json",
-        dataType: "json",
-        success: function(json){
-            console.log(json);
-            numberOfComics = json.num;
-        }
-    });
 
     $("#submitButton").click(function(e){
         e.preventDefault();
 
-        var random = Math.floor(Math.random() * numberOfComics) + 1;
-
         $.ajax({
             type: "GET",
+            url: "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
             dataType: "json",
-            url: "https://xkcd.com/" + random + "/info.0.json",
             success: function(json){
-                console.log(json);
+                console.log(json.quoteText);
+               $("#thought").html(json.quoteText); 
             }
-
         });
 
     });
